@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Ingredientes</title>
+    <!-- Incluindo Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <style>
+        /* Estilos adicionais */
+    </style>
+</head>
+
+<body class="bg-gray-100 py-8">
+    <div class="max-w-lg mx-auto bg-white p-8 rounded shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Calculadora de Ingredientes da Massa de Esfiha</h1>
+        <label for="pesoFinal" class="block mb-2">Peso Final da Massa (em gramas):</label>
+        <input type="number" id="pesoFinal" class="block w-full px-4 py-2 mb-4 border rounded">
+        <button id="calcular" class="block w-full bg-blue-500 text-white font-bold py-2 px-4 rounded">Calcular Ingredientes</button>
+        <div id="resultado" class="mt-4 hidden">
+            <h2 class="text-xl font-bold mb-2">Quantidade de Ingredientes:</h2>
+            <ul>
+                <li><span id="agua"></span> <!-- g de água --></li>
+                <li><span id="leite"></span>g de Leite</li>
+                <li><span id="farinhaAnaConda"></span>g de Farinha Ana Conda (Pastel)</li>
+                <li><span id="farinhaVentureli"></span>g de Farinha Ventureli</li>
+                <li><span id="acucar"></span>g de Açúcar</li>
+                <li><span id="sal"></span>g de sal</li>
+                <li><span id="fermento"></span>g de Fermento</li>
+                <li><span id="oleo"></span>g de Óleo</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Incluindo JavaScript -->
+    <script>
+        document.getElementById('calcular').addEventListener('click', function() {
+            // Obtendo o peso final da massa
+            var pesoFinal = document.getElementById('pesoFinal').value;
+
+            // Calculando os pesos dos ingredientes
+            var agua = Math.round((2448 / 6000) * pesoFinal);
+            var leite = Math.round((600 / 6000) * pesoFinal);
+            var farinhaAnaConda = Math.round((4200 / 6000) * pesoFinal);
+            var farinhaVentureli = Math.round((1800 / 6000) * pesoFinal);
+            var acucar = Math.round((600 / 6000) * pesoFinal);
+            var sal = Math.round((16 / 6000) * pesoFinal);
+            var fermento = Math.round((18 / 6000) * pesoFinal);
+            var oleo = Math.round((600 / 6000) * pesoFinal);
+
+            // Exibindo os resultados
+            document.getElementById('agua').textContent = `${agua}g de água (ou ${agua + leite}g de agua e leite juntos) `;
+            document.getElementById('leite').textContent = `${leite}`;
+            document.getElementById('farinhaAnaConda').textContent = `${farinhaAnaConda}`;
+            document.getElementById('farinhaVentureli').textContent = `${farinhaVentureli}`;
+            document.getElementById('acucar').textContent = `${acucar}`;
+            document.getElementById('sal').textContent = `${sal}`;
+            document.getElementById('fermento').textContent = `${fermento}`;
+            document.getElementById('oleo').textContent = `${oleo}`;
+
+            // Exibindo o resultado
+            document.getElementById('resultado').classList.remove('hidden');
+        });
+    </script>
+</body>
+
+</html>
